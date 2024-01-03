@@ -1,0 +1,49 @@
+lab of switch:
+ ---virtual Environment
+	----packetTracer application
+		----Switch             			: that has to be managed
+		----laptop/desktop			: used to access the switch and display all contents of the switch
+		----console Cable			: to access the switch from the laptop to view and change configuration locally.
+		----Lan Cable				: to transfer data or files from switch to the laptop/server and vice-versa.
+		----putty/hyperTerminal/TeraTerm	: to provide an interface to connect with the switch from laptop and manage the configuration
+		----tftp server				: to backup data of switch on the server and restore data from server to the switch.
+
+ ---Physical Environment [hardware devices]
+		----Switch             			: that has to be managed
+		----laptop/desktop			: used to access the switch and display all contents of the switch
+		----console Cable			: to access the switch from the laptop to view and change configuration locally.
+		----Lan Cable				: to transfer data or files from switch to the laptop/server and vice-versa.
+		----putty/hyperTerminal/TeraTerm	: to provide an interface to connect with the switch from laptop and manage the configuration
+		----tftp server				: to backup data of switch on the server and restore data from server to the switch.
+		
+what to do on a switch
+	--- connect the switch from laptop/desktop using console cable
+	--- connect the switch from server[tftp] using lan cable
+	--- access the switch from laptop using putty(physical)/terminal(packettracer)
+
+	--- view some settings and configuration  		[Rec. : use all show commands in privilage Mode]
+		---- show flash memory 			[show flash:]
+		---- show runnig-config			[show running-config]
+		---- show startup-config		[show startup-config]
+		---- show version			[show version ]
+		---- show vlan information		[show vlan]
+		---- show port information		[show ip interface brief]
+		---- show cam table			[show mac-address-table]
+
+	--- show files					[show flash: ]
+	--- rename files				[rename old file name new file name]
+	--- delete file					[delete file name]
+	--- delete startup-config			[erase startup-configuration]
+	--- save running-config into startup-config	[copy running-config startup-config]
+	--- save startup-config into tftp server	[copy startup-config flash: ]
+	--- restore startup-config from tftp server	[copy tftp: startup-config ]
+	--- copy startup-config into running-config	[copy startup-config running-config ]
+
+	--- change setting / configuration [Rec. : all given bellow commands should be run in global configuration mode ]
+		--- change hostname			[hostname newhostname]
+		--- change access mode password		[enable secret newpassword ]
+		--- set ip address on the switch	[interface vlan1 ---> ip address 192.168.1.1 255.255.255.0 ----> no shutdown]
+		--- change console mode password	[line console 0 ---> password newPassword ----> login ]
+		--- enable telnet			[line vty 0 15 ---->password newTelnetpassword ---->login---> exit ]
+		--- save all current settings		[do copy running-config startup-config ]
+		--- break switch password			[reboot the switch--->press mode button for 5-10 sec----> flash_init --->ren config.text hub.text-->boot the swtich]
